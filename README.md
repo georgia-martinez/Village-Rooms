@@ -2,7 +2,7 @@
 
 Gives a ranking of the rooms in The Village based on your preferences. 
 
-DISCLAIMER: Only rooms included in the input csv file are included in the rankings. The included rooms.csv does NOT include every single room in The Village. Rooms facing 115th street or on the 1st floor were excluded, but feel free to add more rooms. 
+DISCLAIMER: Only rooms included in the input csv file are included in the rankings. The included rooms.csv does NOT include every room in The Village. It contains 4-person rooms excluding the ones facing 115th street or on the 1st floor. Feel free to add more rooms to the csv.  
 
 ## Set up
 
