@@ -1,5 +1,6 @@
 import pandas as pd
 import yaml
+import csv
 
 def sortable_room(room, priority, orderings):
     vals = []
@@ -21,22 +22,11 @@ class Room():
         return f"House {self.house} Room #{self.room_num} (view: {self.view}, large: {self.large})"
 
 if __name__ == "__main__":
-    # Read csv with the rooms
-    ROOMS_PATH = "rooms.csv"
-    df = pd.read_csv(ROOMS_PATH)
-
-    # Put all of the rooms in a list
-    all_rooms = []
-
-    for index, row in df.iterrows():
-        new_room = Room(row["House"], row["Room Number"], row["View"], row["Large"])
-        all_rooms.append(new_room)
-
+    
     # Read config
     with open("config.yaml", "r") as f:
         config = yaml.safe_load(f)
 
-    # Sort by priority
     priority = config["priority"]
 
     orderings = {
@@ -46,7 +36,28 @@ if __name__ == "__main__":
         "large": [True, False]
     }
 
+    # Put all of the rooms in a list and sort by priority
+    df = pd.read_csv(config["input"])
+
+    all_rooms = []
+
+    for index, row in df.iterrows():
+        new_room = Room(row["House"], row["Room Number"], row["View"], row["Large"])
+        all_rooms.append(new_room)
+
     all_rooms.sort(key=lambda room: sortable_room(room, priority, orderings))
 
-    for room in all_rooms:
-        print(room)
+    # Save ranking as csv
+    with open(config["output"], 'w') as csvfile: 
+        writer = csv.writer(csvfile) 
+            
+        header = ["house", "room_num", "view", "large"]
+        writer.writerow(header)
+
+        for room in all_rooms:
+            room_dict = vars(room)
+
+            row = [room_dict[attr] for attr in header]
+            writer.writerow(row)
+
+            print(room)

@@ -4,3 +4,7 @@ priority: [large, view, house, floor]
 house: [4, 5, 6, 7, 3, 2, 1]
 view: [field, baseball pitch, police station, 115th corner/police station, wyant, garage]
 floor: [2, 3]
+
+# File paths
+input: rooms.csv
+output: rankings.csv

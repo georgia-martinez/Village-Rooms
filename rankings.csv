@@ -1,0 +1,40 @@
+house,room_num,view,large
+4,258,field,True
+4,358,field,True
+5,212,field,True
+5,220,field,True
+5,312,field,True
+5,320,field,True
+6,312,field,True
+7,232,field,True
+7,332,field,True
+3,340,field,True
+7,229,baseball pitch,True
+7,329,baseball pitch,True
+7,233,wyant,True
+7,333,wyant,True
+4,256,field,False
+4,356,field,False
+5,218,field,False
+5,318,field,False
+3,232,field,False
+3,332,field,False
+3,336,field,False
+2,228,field,False
+2,320,field,False
+2,328,field,False
+3,231,police station,False
+3,233,police station,False
+3,243,police station,False
+3,331,police station,False
+3,343,police station,False
+3,245,115th corner/police station,False
+3,345,115th corner/police station,False
+2,221,garage,False
+2,225,garage,False
+2,227,garage,False
+2,321,garage,False
+2,325,garage,False
+2,327,garage,False
+1,213,garage,False
+1,313,garage,False
