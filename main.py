@@ -13,13 +13,13 @@ def sortable_room(room, priority, orderings):
 class Room():
     def __init__(self, house, room, view, large):
         self.house = house
-        self.room_num = room
-        self.floor = int(str(self.room_num)[0])
+        self.room = room
+        self.floor = int(str(self.room)[0])
         self.view = view
         self.large = large
     
     def __str__(self):
-        return f"House {self.house} Room #{self.room_num} (view: {self.view}, large: {self.large})"
+        return f"House {self.house} Room #{self.room} (view: {self.view}, large: {self.large})"
 
 if __name__ == "__main__":
     
@@ -29,12 +29,11 @@ if __name__ == "__main__":
 
     priority = config["priority"]
 
-    orderings = {
-        "house": config["house"],
-        "view": config["view"],
-        "floor": config["floor"],
-        "large": config["large"]
-    }
+    orderings = dict()
+    room_attrs = ["house", "view", "floor", "large"]
+
+    for attr in room_attrs:
+        orderings[attr] = config[attr]
 
     # Put all of the rooms in a list and sort by priority
     df = pd.read_csv(config["input"])
@@ -42,7 +41,7 @@ if __name__ == "__main__":
     all_rooms = []
 
     for index, row in df.iterrows():
-        new_room = Room(row["House"], row["Room Number"], row["View"], row["Large"])
+        new_room = Room(row["house"], row["room"], row["view"], row["large"])
         all_rooms.append(new_room)
 
     all_rooms.sort(key=lambda room: sortable_room(room, priority, orderings))
@@ -51,7 +50,7 @@ if __name__ == "__main__":
     with open(config["output"], 'w') as csvfile: 
         writer = csv.writer(csvfile) 
             
-        header = ["house", "room_num", "view", "large"]
+        header = ["house", "room", "view", "large"]
         writer.writerow(header)
 
         for room in all_rooms:
