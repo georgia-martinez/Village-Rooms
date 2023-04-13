@@ -33,7 +33,7 @@ if __name__ == "__main__":
         "house": config["house"],
         "view": config["view"],
         "floor": config["floor"],
-        "large": [True, False]
+        "large": config["large"]
     }
 
     # Put all of the rooms in a list and sort by priority
